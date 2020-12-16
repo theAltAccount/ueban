@@ -1,0 +1,15 @@
+{
+  "name": "counterculture",
+  "version": "1.0.0",
+  "description": "Special bot for Counterculture",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "authors": "Hfib#7331, ANDREY#2623",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "mongoose": "^5.9.17"
+  }
+}
