@@ -4,9 +4,9 @@ It won't be updated as it's really spaghetti-coded and is being rewrited to C# a
 
 ### How to install it?
 
-• `git clone https://github.com/theAltAccount/ueban`
-• `npm i`
-• `node index.js`
+• `git clone https://github.com/theAltAccount/ueban`\n
+• `npm i`\n
+• `node index.js`\n
 
 Easy!
 
