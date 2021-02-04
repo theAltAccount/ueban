@@ -88,10 +88,25 @@ bot.once('ready', async () => {
 })
 
 const onMsg = async message => {
-  const embed = message.embeds[0] || null
-  if(message.author.id == SDC && embed && embed.title == 'Сервер Up') {
-    let bumped = bot.users.find(u => u.tag == embed.footer.text);
-    message.channel.send(`${bumped}, спс за бамп`);
+  const embed = 0 in message.embeds;
+
+   // Bump reminder (Govnokod)
+  findBumper = (embed) => {
+    if (message.author.id === SDC && embed.title === 'Сервер Up') {
+      const bumperTag = embed.footer.text;
+      return message.guild.members.cache.find(m => m.user.tag === bumperTag);
+    } else if (message.author.id === MON && embed.description && embed.description.match(/server bumped by/i)) {
+      const bumperID = embed.description.match(/[0-9]+/i);
+      return message.guild.members.cache.find(m => m.id === bumperID);
+    };
+  };
+
+  if (embed) {
+    const bumperMember = await findBumper(message.embeds[0])
+    if (!bumperMember) return;
+    message.channel.send(`${bumperMember}, Спс за бамп, я напомню через 4 часа`);
+    bot.utils.addMoney(bumperMember.id, 0, 200)
+    setTimeout(() => message.channel.send(`${bumperMember} Пришло время бампать сервер!`), 144e5);
   };
 
   if (message.author.bot) return;
